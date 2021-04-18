@@ -83,7 +83,7 @@ updateAvatar(link) {
 }
 }
 
-const Api = new Api({
+const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
     headers: {
         authorization: '2eb4d3bb-6397-4fac-946b-506829848b31',
@@ -91,4 +91,4 @@ const Api = new Api({
     }
 })
 
-export default api
+export default api;

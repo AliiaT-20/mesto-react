@@ -1,5 +1,5 @@
 import React from 'react';
-import Api from '../utils/api';
+import api from '../utils/api';
 import Card from './Card';
 import editIcon from '../images/edit-icon.svg'
 
@@ -14,12 +14,12 @@ function Main(props) {
             setUserDescription(description)
             setUserAvatar(avatar)
         }
-        Api.getProfileInfo()
+        api.getProfileInfo()
         .then((info) => {
             renderInfo(info.name, info.about, info.avatar)
         })
         .catch(err => console.log(err));
-        Api.getInitialCards()
+        api.getInitialCards()
         .then((data) => {
             setCards(data)
         })

@@ -1,6 +1,7 @@
 import React from 'react';
-import api from '../utils/Api';
+import api from '../utils/api';
 import Card from './Card';
+import editIcon from '../images/edit-icon.svg'
 
 function Main(props) {
     const [userName, setUserName] = React.useState();
@@ -17,11 +18,12 @@ function Main(props) {
         .then((info) => {
             renderInfo(info.name, info.about, info.avatar)
         })
-        .catch(err => Promise.reject(err));
+        .catch(err => console.log(err));
         api.getInitialCards()
         .then((data) => {
             setCards(data)
         })
+        .catch(err => console.log(err));
     }, [])
     return (
         <main className="content">
@@ -30,7 +32,7 @@ function Main(props) {
                         <div className="profile__avatar-block">
                             <div className="avatar" style={{ backgroundImage: `url(${userAvatar})` }}></div>
                             <div className="profile__wrap-edit" onClick = {props.onEditAvatar}>
-                                <img src="../images/edit-icon.svg" alt="Редактирование" className="profile__icon" />
+                                <img src={editIcon} alt="Редактирование" className="profile__icon" />
                             </div>
                         </div>
                         <div>
@@ -45,7 +47,9 @@ function Main(props) {
                 </section>
                 <section className="elements">
                 {cards.map((card) => {
-                        return <Card card = {card} onCardClick = {props.onCardClick} />
+                        return (
+                            <Card card = {card} onCardClick = {props.onCardClick} key={card._id} />
+                        )
                     })}
                 </section>
             </main>
@@ -53,16 +57,4 @@ function Main(props) {
   }
   
   export default Main;
-
-  /*{cards.forEach((card) => {
-                        return <div className="element">
-                        <div className="element__photo" style = {{backgroundImage: `url(${card.link})`}}></div>
-                        <h2 className="element__title">{card.name}</h2>
-                        <div className="element__block-likes">
-                          <button className="element__button" type="button"></button>
-                          <p className="element__like-counter">{card.likes.length}</p>
-                        </div>
-                        <button className="element__button-trash" type="button"></button>
-                      </div>
-                    })}*/
   

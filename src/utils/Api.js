@@ -55,21 +55,24 @@ removeCard(id) {
     .then(res => this._check(res))
 }
 
-addLike(id) {
-    return fetch(`${this.url + '/cards/likes'}/${id}`, {
-        method: 'PUT',
-        headers: this.headers,
-    })
-    .then(res => this._check(res))
-}
 
-deleteLike(id) {
-    return fetch(`${this.url + '/cards/likes'}/${id}`, {
-        method: 'DELETE',
-        headers: this.headers,
-    })
-    .then(res => this._check(res))
-}
+
+changeLikeCardStatus(id, isLiked) {
+    if (isLiked) {
+        return fetch(`${this.url + '/cards/likes'}/${id}`, {
+            method: 'PUT',
+            headers: this.headers,
+        })
+        .then(res => this._check(res))
+        
+    } else {
+        return fetch(`${this.url + '/cards/likes'}/${id}`, {
+            method: 'DELETE',
+            headers: this.headers,
+        })
+        .then(res => this._check(res))
+        }
+    }
 
 updateAvatar(link) {
     return fetch(this.url + '/users/me/avatar', {

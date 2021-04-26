@@ -27,7 +27,7 @@ function App() {
     function handleCardDelete(card) {
         api.removeCard(card._id)
         .then((data) => {
-            setCards((cards) => {cards.filter(item => item._id !== card._id)})
+            setCards((cards) => cards.filter(item => item._id !== card._id))
         })
     }
     function handleEditAvatarClick() {

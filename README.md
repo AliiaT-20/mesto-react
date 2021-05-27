@@ -5,8 +5,8 @@
 
 ### В проекте использованы такие технологии, как:
 
-Java Script;
-Flex-box;
-медиазапросы;
-React;
-RCA.
+- Java Script;
+- Flex-box;
+- медиазапросы;
+- React;
+- RCA.
